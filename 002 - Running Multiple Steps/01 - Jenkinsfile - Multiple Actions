@@ -8,7 +8,7 @@ pipeline {
        stage('build') {
             steps {
                 sh 'echo $(date)'
-		sleep '10s'
+		sleep 10s
 	   }
         }
     }

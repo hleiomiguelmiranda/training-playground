@@ -1,31 +1,18 @@
 pipeline {
-  agent any
+  agent {
+    docker {
+      image 'alpine:latest'
+    }
+  }
   stages {
-    stage('Unit Test') {
+    stage('build') {
       steps {
-        sh 'mvn clean test'
-      }
-    }
-    stage('Deploy Standalone') {
-      steps {
-        sh 'mvn deploy -P standalone'
-      }
-    }
-    stage('Deploy AnyPoint') {
-      environment {
-        ANYPOINT_CREDENTIALS = credentials('anypoint.credentials')
-      }
-      steps {
-        sh 'mvn deploy -P arm -Darm.target.name=local-4.0.0-ee -Danypoint.username=${ANYPOINT_CREDENTIALS_USR}  -Danypoint.password=${ANYPOINT_CREDENTIALS_PSW}'
-      }
-    }
-    stage('Deploy CloudHub') {
-      environment {
-        ANYPOINT_CREDENTIALS = credentials('anypoint.credentials')
-      }
-      steps {
-        sh 'mvn deploy -P cloudhub -Dmule.version=4.0.0 -Danypoint.username=${ANYPOINT_CREDENTIALS_USR} -Danypoint.password=${ANYPOINT_CREDENTIALS_PSW}'
+        saveAndPrintDate("test") sh "sleep 10s"
+        saveAndPrintDate("test2")
       }
     }
   }
+}
+def saveAndPrintDate(filename = '') {
+  sh "date > $filename && cat $filename"
 }

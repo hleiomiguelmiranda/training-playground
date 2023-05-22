@@ -12,6 +12,7 @@ pipeline {
                     string(name: 'NAME', description: 'What is your name?') 
                     string(name: 'AGE', description: 'How old are you?') 
                     }
+		    }
             steps {
                 echo "$NAME"
                 echo "$AGE"

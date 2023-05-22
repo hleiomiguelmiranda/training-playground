@@ -12,7 +12,7 @@ pipeline {
 	     }
       stage('check value') {
         steps {
-	  def result = sh '$(test) | grep '2023'
+	  def result = sh '$(test) | grep "2023"'
           println result
     
   def saveAndPrintDate(filename = '') {

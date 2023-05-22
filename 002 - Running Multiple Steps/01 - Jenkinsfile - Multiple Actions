@@ -9,5 +9,7 @@ pipeline {
             steps {
                 sh 'echo $(date)'
 		sleep '10s'
+	   }
+        }
     }
 }

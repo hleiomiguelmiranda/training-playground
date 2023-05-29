@@ -1,33 +1,17 @@
 pipeline {
-
-    agent { 
-
-    dockerfile {
-
-            dir '003 - Defining Execution Environments'
-
-            filename '02 - Dockerfile - Dockerfile Agent'
-
-        }
-
-    }
-
-    stages {
-
-        stage('build') {
-
-            steps {
-
-                sh "echo 'You need to install curl'"
-
-                sh "curl www.google.com"
-
-            }
-
-        }
-
-    }
-
+    agent {
+        dockerfile {
+            dir '003 - Defining Execution Environments'
+            filename '02 - Dockerfile - Dockerfile Agent'
+        }
+    }
+    stages {
+        stage('build') {
+            steps {
+                sh "echo 'You need to install curl'"
+                sh "apk add --no-cache curl"
+                sh "curl www.google.com"
+            }
+        }
+    }
 }
-
-

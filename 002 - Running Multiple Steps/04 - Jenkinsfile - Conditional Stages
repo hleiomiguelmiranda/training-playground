@@ -1,6 +1,6 @@
 pipeline {
     parameters {
-        choice(name: 'STAGE', choices: ['Build', 'Test'], description: 'Which stage?')
+        STAGE(name: 'STAGE', choices: ['Build', 'Test'], description: 'Which stage?')
     }
     agent { 
         docker { 
@@ -8,7 +8,7 @@ pipeline {
         }
     }
     stages {
-        stage('Build') {
+        STAGE('Build') {
             when {
                 expression { params.STAGE == 'Build' }
             }
@@ -17,7 +17,7 @@ pipeline {
             }
         }
         
-        stage('Test') {
+        STAGE('Test') {
             when {
                 expression { params.STAGE == 'Test' }
             }

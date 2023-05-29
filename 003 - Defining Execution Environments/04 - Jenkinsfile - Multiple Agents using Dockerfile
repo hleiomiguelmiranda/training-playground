@@ -5,7 +5,7 @@ pipeline {
             agent {
                 dockerfile {
                     dir '003 - Defining Execution Environments'
-                    filename '04 - Dockerfile - Java'
+                    filename '004 - JAVA'
                 }
             }
             steps {
@@ -16,7 +16,7 @@ pipeline {
             agent {
                 dockerfile {
                     dir '003 - Defining Execution Environments'
-                    filename '04 - Dockerfile - NPM'
+                    filename '004 - NPM'
                 }
             }
             steps {
